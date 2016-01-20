@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_add_mission_title">Add mission</string>
+    <string name="actionbar_step1">Choose missions and players</string>
+    <string name="add_mission">Add mission</string>
+    <string name="add_person">Add player</string>
+    <string name="dialog_add">Add</string>
+    <string name="dialog_add_hint">Write...</string>
+    <string name="dialog_add_person_title">Add player</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_no">No</string>
+    <string name="dialog_not_admin">Device already in use</string>
+    <string name="dialog_not_admin_content">Someone is already using this Chromecast device.</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_remove_mission">Are you sure you want to remove this mission?</string>
+    <string name="dialog_remove_mission_title">Remove mission</string>
+    <string name="dialog_remove_person">Are you sure you want to remove this player?</string>
+    <string name="dialog_remove_person_title">Remove player</string>
+    <string name="dialog_time">Time settings</string>
+    <string name="dialog_time_max">Maximum time before the next round starts (minutes):</string>
+    <string name="dialog_time_min">Minimum time before the next round starts (minutes):</string>
+    <string name="dialog_update">Update</string>
+    <string name="dialog_update_available">Update available</string>
+    <string name="dialog_update_available_content">A new version is available!\nDo you want to download it now?\n\nInstalled version: %1$s\nNew version: %2$s</string>
+    <string name="dialog_yes">Yes</string>
+    <string name="dkcc_app_name">Dödskrök for Chromecast</string>
+    <string name="fab_not_connected">Almost done! Connect to a device first.</string>
+    <string name="fab_play_error">Add some missions and players first!</string>
+    <string name="media_route_menu_title">Cast</string>
+    <string name="menu_time">Choose time interval</string>
+    <string name="paused">Game paused</string>
+    <string name="dkcc_author_credit">Developed by Jacob Andersson</string>
+    <string name="playing_view_missions">Missions</string>
+    <string name="playing_view_players">Players</string>
+</resources>

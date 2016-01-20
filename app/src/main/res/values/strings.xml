@@ -1,0 +1,49 @@
+<resources>
+    <string name="cast_appid" translatable="false">72E40F21</string>
+    <string name="cast_namespace" translatable="false">urn:x-cast:com.jacobandersson.dodskrok</string>
+
+    <string name="dkcc_app_name">Dödskrök för Chromecast</string>
+    <string name="dkcc_update_site" translatable="false">https://dk.jacob-andersson.com/</string>
+    <string name="dkcc_apk_prefix" translatable="false">dodskrok-chromecast_</string>
+
+    <string name="playing_view_missions">Uppdrag</string>
+    <string name="playing_view_players">Spelare</string>
+
+    <string name="add_person">Lägg till person</string>
+    <string name="add_mission">Lägg till uppdrag</string>
+
+    <string name="dialog_remove_person_title">Ta bort person</string>
+    <string name="dialog_remove_person">Är du säker på att du vill ta bort personen?</string>
+    <string name="dialog_remove_mission_title">Ta bort uppdrag</string>
+    <string name="dialog_remove_mission">Är du säker på att du vill ta bort uppdraget?</string>
+    <string name="dialog_yes">Ja</string>
+    <string name="dialog_no">Nej</string>
+    <string name="dialog_add">Lägg till</string>
+    <string name="dialog_cancel">Avbryt</string>
+    <string name="dialog_add_person_title">Lägg till person</string>
+    <string name="dialog_add_mission_title">Lägg till uppdrag</string>
+
+    <string name="paused">Spelet pausat</string>
+    <string name="actionbar_title" translatable="false">Dödskrök</string>
+    <string name="dialog_add_hint">Skriv...</string>
+    <string name="actionbar_step1">Välj uppdrag och spelare</string>
+    <string name="fab_play_error">Lägg till lite uppdrag och spelare först!</string>
+    <string name="media_route_menu_title">Casta</string>
+
+    <string name="fab_not_connected">Snart där! Anslut till en enhet först.</string>
+
+    <string name="menu_time">Välj tidsintervall</string>
+    <string name="dialog_time">Tidsinställningar</string>
+    <string name="dialog_time_min">Minsta tiden till nästa runda (minuter):</string>
+    <string name="dialog_update">Uppdatera</string>
+
+    <string name="dialog_not_admin_content">Det är redan någon som använder den här Chromecast-enheten.</string>
+    <string name="dialog_ok">Okej</string>
+
+    <string name="dialog_update_available">Uppdatering tillgänglig</string>
+    <string name="dialog_update_available_content">En ny version är tillgänglig!\nVill du ladda ner den nu?\n\nInstallerad version: %1$s\nNy version: %2$s</string>
+    <string name="dialog_time_max">Största tiden till nästa runda (minuter):</string>
+    <string name="dialog_not_admin">Enhet upptagen</string>
+    <string name="dkcc_author_credit">Utvecklad av Jacob Andersson</string>
+    <string name="dkcc_update_file" translatable="false">latest.php</string>
+</resources>

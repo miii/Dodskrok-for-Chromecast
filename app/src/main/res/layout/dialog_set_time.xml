@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/activity_horizontal_margin"
+    android:paddingLeft="@dimen/dialog_input_padding"
+    android:paddingTop="@dimen/dialog_input_padding"
+    android:paddingRight="@dimen/dialog_input_padding"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/dialog_input_padding_field"
+        android:background="@color/backgroundAccentSecondary"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|left"
+            android:text="@string/dialog_time_min" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:text="1"
+            android:inputType="numberDecimal"
+            android:id="@+id/dialog_time_min"
+            android:paddingBottom="@dimen/dialog_input_padding"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/dialog_input_padding_field"
+        android:layout_marginTop="@dimen/dialog_input_padding_field"
+        android:background="@color/backgroundAccentSecondary"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|left"
+            android:text="@string/dialog_time_max" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:text="3"
+            android:inputType="numberDecimal"
+            android:id="@+id/dialog_time_max"
+            android:paddingBottom="@dimen/dialog_input_padding"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</LinearLayout>
