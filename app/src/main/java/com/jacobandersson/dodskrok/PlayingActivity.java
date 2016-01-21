@@ -76,7 +76,7 @@ public class PlayingActivity extends AppCompatActivity implements DataCastConsum
         maInstance = this;
         GoogleCast.getInstance(this, true);
         CCBridge.setContext(this);
-        checkForUpdates();
+        //checkForUpdates();
 
         getSupportActionBar().setTitle(R.string.actionbar_title);
 
@@ -159,7 +159,7 @@ public class PlayingActivity extends AppCompatActivity implements DataCastConsum
         //Crashlytics.setUserName("Test User");
     }
 
-    private void checkForUpdates() {
+    /*private void checkForUpdates() {
         RequestQueue queue = Volley.newRequestQueue(this);
 
         // Update url
@@ -188,7 +188,7 @@ public class PlayingActivity extends AppCompatActivity implements DataCastConsum
         });
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
-    }
+    }*/
 
     public boolean isStartReady() {
         return personsArrayAdapter.getCount() > 1 && missionsArrayAdapter.getCount() > 0;
@@ -272,7 +272,7 @@ public class PlayingActivity extends AppCompatActivity implements DataCastConsum
         builder.show();
     }
 
-    public void showUpdateDialog(final String version) {
+    /*public void showUpdateDialog(final String version) {
         String dialogMessage = String.format(
                 getResources().getString(R.string.dialog_update_available_content),
                 BuildConfig.VERSION_NAME,
@@ -298,7 +298,7 @@ public class PlayingActivity extends AppCompatActivity implements DataCastConsum
                     }
                 });
         builder.show();
-    }
+    }*/
 
     @Override
     public void onApplicationConnected(ApplicationMetadata appMetadata, String applicationStatus, String sessionId, boolean wasLaunched) {
