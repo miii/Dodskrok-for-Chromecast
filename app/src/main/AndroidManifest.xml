@@ -8,8 +8,7 @@
 
     <uses-feature
         android:name="android.hardware.wifi"
-        android:required="true">
-    </uses-feature>
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -20,16 +19,28 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
         <activity
             android:name=".PlayingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".SplashscreenActivity"
+            android:screenOrientation="portrait"
             android:label="@string/dkcc_app_name"
-            android:theme="@style/AppTheme"
-            android:screenOrientation="portrait">
+            android:theme="@style/AppTheme.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="09c9e88481f48ce6932b49310a33fffce62515a6" />

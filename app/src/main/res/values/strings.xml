@@ -46,4 +46,10 @@
     <string name="dialog_not_admin">Enhet upptagen</string>
     <string name="dkcc_author_credit">Utvecklad av Jacob Andersson</string>
     <string name="dkcc_update_file" translatable="false">latest.php</string>
+
+    <string name="title_activity_splashscreen">SplashscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="accessibility_logo">Staben logo</string>
+
 </resources>
