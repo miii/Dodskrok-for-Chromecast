@@ -1,22 +1,15 @@
-package com.jacobandersson.dodskrok;
+package com.jacobandersson.dodskrok.cast;
 
 import android.app.Activity;
-import android.content.Context;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.MediaRouteButton;
 
 import com.google.android.libraries.cast.companionlibrary.cast.BaseCastManager;
 import com.google.android.libraries.cast.companionlibrary.cast.CastConfiguration;
 import com.google.android.libraries.cast.companionlibrary.cast.DataCastManager;
 import com.google.android.libraries.cast.companionlibrary.cast.callbacks.DataCastConsumer;
-import com.google.android.libraries.cast.companionlibrary.cast.exceptions.NoConnectionException;
-import com.google.android.libraries.cast.companionlibrary.cast.exceptions.TransientNetworkDisconnectionException;
+import com.jacobandersson.dodskrok.R;
 
 import java.util.ArrayList;
 
-/**
- * Created by Jacob on 2015-12-21.
- */
 public class GoogleCast {
 
     private static DataCastManager mCastManager = null;
@@ -29,11 +22,8 @@ public class GoogleCast {
         return mCastManager;
     }
 
-    public static DataCastManager getInstance(DataCastConsumer context, boolean consumer) {
-        if (consumer)
-            consumers.add(context);
-
-        return getInstance((Activity) context);
+    public static void addConsumer(DataCastConsumer consumer) {
+        consumers.add(consumer);
     }
 
     private static void createInstance(Activity context) {

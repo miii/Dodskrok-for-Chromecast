@@ -21,7 +21,7 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".PlayingActivity"
+            android:name=".playing.PlayingActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
             <intent-filter>

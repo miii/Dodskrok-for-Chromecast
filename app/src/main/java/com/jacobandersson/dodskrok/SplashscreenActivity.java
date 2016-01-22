@@ -5,6 +5,9 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.jacobandersson.dodskrok.cast.GoogleCast;
+import com.jacobandersson.dodskrok.playing.PlayingActivity;
+
 public class SplashscreenActivity extends AppCompatActivity {
 
     @Override

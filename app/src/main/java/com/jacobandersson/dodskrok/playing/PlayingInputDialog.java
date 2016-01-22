@@ -1,5 +1,6 @@
-package com.jacobandersson.dodskrok;
+package com.jacobandersson.dodskrok.playing;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
@@ -8,26 +9,33 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+
+import com.jacobandersson.dodskrok.R;
+import com.jacobandersson.dodskrok.playing.PlayingArrayAdapter;
+
 import java.util.HashMap;
 
-/**
- * Created by Jacob on 2015-12-20.
- */
 public class PlayingInputDialog {
 
     private PlayingArrayAdapter.Types type;
     private HashMap<String, Integer> locale;
     private BaseAdapter adapter;
 
-    PlayingActivity activity;
+    Activity activity;
 
-    public PlayingInputDialog(PlayingActivity activity, PlayingArrayAdapter.Types type) {
+    onClickListener pcl = null;
+
+    public PlayingInputDialog(Activity activity, PlayingArrayAdapter.Types type) {
         this.activity = activity;
         setLocale(type);
         buildDialog();
     }
 
-    public void buildDialog() {
+    public void setOnPositiveClickListener(onClickListener pcl) {
+        this.pcl = pcl;
+    }
+
+    private void buildDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle(locale.get("dialog_add_title"));
 
@@ -63,7 +71,8 @@ public class PlayingInputDialog {
                 if (text.length() == 0)
                     return;
 
-                CCBridge.add(text, type);
+                if (pcl != null)
+                    pcl.onClick(text);
 
                 InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, 0);
@@ -88,6 +97,10 @@ public class PlayingInputDialog {
                 locale.put("dialog_add_title", R.string.dialog_add_mission_title);
                 break;
         }
+    }
+
+    public interface onClickListener {
+        void onClick(String info);
     }
 
 }

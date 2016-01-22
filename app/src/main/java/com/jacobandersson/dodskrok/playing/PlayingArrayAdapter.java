@@ -1,4 +1,4 @@
-package com.jacobandersson.dodskrok;
+package com.jacobandersson.dodskrok.playing;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -9,10 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
+import com.jacobandersson.dodskrok.R;
+import com.jacobandersson.dodskrok.cast.CCBridge;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -33,19 +34,21 @@ public class PlayingArrayAdapter extends BaseAdapter {
     private static LayoutInflater inflater = null;
 
     private ArrayList<String> list;
+    private OnClickListener clickListener;
 
-    public PlayingArrayAdapter(PlayingActivity activity, Types type) {
+    public PlayingArrayAdapter(PlayingActivity activity, Types type, OnClickListener oCL) {
         this.activity = activity;
         this.inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.list = new ArrayList<>();
+        this.clickListener = oCL;
 
         setLocale(type);
     }
 
-    public PlayingArrayAdapter(PlayingActivity activity, Types type, ArrayList<String> list) {
+    /*public PlayingArrayAdapter(PlayingActivity activity, Types type, ArrayList<String> list) {
         this(activity, type);
         this.list = list;
-    }
+    }*/
 
     public ArrayList<String> getList() {
         return list;
@@ -57,12 +60,10 @@ public class PlayingArrayAdapter extends BaseAdapter {
 
         switch (type) {
             case PERSON:
-                activity.personsArrayAdapter = this;
                 locale.put("dialog_remove_title", R.string.dialog_remove_person_title);
                 locale.put("dialog_remove_content", R.string.dialog_remove_person);
                 break;
             case MISSION:
-                activity.missionsArrayAdapter = this;
                 locale.put("dialog_remove_title", R.string.dialog_remove_mission_title);
                 locale.put("dialog_remove_content", R.string.dialog_remove_mission);
                 break;
@@ -108,7 +109,8 @@ public class PlayingArrayAdapter extends BaseAdapter {
                         .setPositiveButton(R.string.dialog_yes, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                CCBridge.remove(index, type);
+                                clickListener.onPositiveClick(index);
+                                //CCBridge.remove(index, type);
                             }
                         })
                         .setNegativeButton(R.string.dialog_no, new DialogInterface.OnClickListener() {
@@ -121,5 +123,9 @@ public class PlayingArrayAdapter extends BaseAdapter {
         });
 
         return elementView;
+    }
+
+    public interface OnClickListener {
+        void onPositiveClick(int index);
     }
 }
