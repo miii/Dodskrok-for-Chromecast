@@ -41,12 +41,16 @@ public class PlayingActivityModel {
         missionsArrayAdapter = new PlayingArrayAdapter(activity, PlayingArrayAdapter.Types.MISSION, new PlayingArrayAdapter.OnClickListener() {
             @Override
             public void onPositiveClick(int index) {
+                missionsArrayAdapter.getList().remove(index);
+                updateAdapter(PlayingArrayAdapter.Types.MISSION);
                 CCBridge.removeMission(index);
             }
         });
-        playersArrayAdapter = new PlayingArrayAdapter(activity, PlayingArrayAdapter.Types.PERSON, new PlayingArrayAdapter.OnClickListener() {
+        playersArrayAdapter = new PlayingArrayAdapter(activity, PlayingArrayAdapter.Types.PLAYER, new PlayingArrayAdapter.OnClickListener() {
             @Override
             public void onPositiveClick(int index) {
+                playersArrayAdapter.getList().remove(index);
+                updateAdapter(PlayingArrayAdapter.Types.PLAYER);
                 CCBridge.removePlayer(index);
             }
         });
@@ -134,14 +138,12 @@ public class PlayingActivityModel {
 
     public void addMissionToAdapter(String name) {
         missionsArrayAdapter.getList().add(name);
-        missionsArrayAdapter.notifyDataSetChanged();
-        Utility.setListViewHeightBasedOnChildren(missionsListView, activity);
+        updateAdapter(PlayingArrayAdapter.Types.MISSION);
     }
 
     public void addPlayerToAdapter(String name) {
         playersArrayAdapter.getList().add(name);
-        playersArrayAdapter.notifyDataSetChanged();
-        Utility.setListViewHeightBasedOnChildren(playersListView, activity);
+        updateAdapter(PlayingArrayAdapter.Types.PLAYER);
     }
 
     public void setFooterText() {
@@ -209,7 +211,7 @@ public class PlayingActivityModel {
         addPersonButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PlayingInputDialog pid = new PlayingInputDialog(activity, PlayingArrayAdapter.Types.PERSON);
+                PlayingInputDialog pid = new PlayingInputDialog(activity, PlayingArrayAdapter.Types.PLAYER);
                 pid.setOnPositiveClickListener(new PlayingInputDialog.onClickListener() {
                     @Override
                     public void onClick(String name) {
@@ -236,6 +238,26 @@ public class PlayingActivityModel {
                 });
             }
         });
+    }
+
+    private void updateAdapter(PlayingArrayAdapter.Types type) {
+
+        PlayingArrayAdapter adapter = null;
+        ListView listview = null;
+
+        switch(type) {
+            case MISSION:
+                adapter = missionsArrayAdapter;
+                listview = missionsListView;
+                break;
+            case PLAYER:
+                adapter = playersArrayAdapter;
+                listview = playersListView;
+                break;
+        }
+
+        adapter.notifyDataSetChanged();
+        Utility.setListViewHeightBasedOnChildren(listview, activity);
     }
 
 }

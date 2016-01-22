@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +24,7 @@ import java.util.HashMap;
 public class PlayingArrayAdapter extends BaseAdapter {
 
     public enum Types {
-        PERSON,
+        PLAYER,
         MISSION
     }
     private Types type;
@@ -45,11 +46,6 @@ public class PlayingArrayAdapter extends BaseAdapter {
         setLocale(type);
     }
 
-    /*public PlayingArrayAdapter(PlayingActivity activity, Types type, ArrayList<String> list) {
-        this(activity, type);
-        this.list = list;
-    }*/
-
     public ArrayList<String> getList() {
         return list;
     }
@@ -59,7 +55,7 @@ public class PlayingArrayAdapter extends BaseAdapter {
         this.type = type;
 
         switch (type) {
-            case PERSON:
+            case PLAYER:
                 locale.put("dialog_remove_title", R.string.dialog_remove_person_title);
                 locale.put("dialog_remove_content", R.string.dialog_remove_person);
                 break;
@@ -110,7 +106,6 @@ public class PlayingArrayAdapter extends BaseAdapter {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 clickListener.onPositiveClick(index);
-                                //CCBridge.remove(index, type);
                             }
                         })
                         .setNegativeButton(R.string.dialog_no, new DialogInterface.OnClickListener() {

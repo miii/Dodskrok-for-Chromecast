@@ -90,7 +90,7 @@ public class PlayingInputDialog {
         locale = new HashMap();
 
         switch (type) {
-            case PERSON:
+            case PLAYER:
                 locale.put("dialog_add_title", R.string.dialog_add_person_title);
                 break;
             case MISSION:
