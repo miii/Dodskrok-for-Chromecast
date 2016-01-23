@@ -2,6 +2,7 @@ package com.jacobandersson.dodskrok.cast;
 
 import android.app.Activity;
 import android.support.v7.media.MediaRouter;
+import android.util.Log;
 
 import com.google.android.gms.cast.ApplicationMetadata;
 import com.google.android.gms.cast.CastDevice;
@@ -12,10 +13,12 @@ import com.google.android.libraries.cast.companionlibrary.cast.callbacks.DataCas
 
 public class CCConsumer implements DataCastConsumer {
 
-    private Activity activity;
-    private Listener listener;
+    private static final String LOG_TAG = "DKAPP/CCConsumer";
 
-    public CCConsumer(Activity a, Listener l) {
+    private Activity activity;
+    private CCConsumerListener listener;
+
+    public CCConsumer(Activity a, CCConsumerListener l) {
         activity = a;
         listener = l;
     }
@@ -50,6 +53,7 @@ public class CCConsumer implements DataCastConsumer {
 
     @Override
     public void onMessageReceived(CastDevice castDevice, String namespace, String message) {
+        Log.d(CCConsumer.LOG_TAG, "Message received: " + message);
         listener.onMessageReceived(castDevice, namespace, message);
     }
 
@@ -63,7 +67,8 @@ public class CCConsumer implements DataCastConsumer {
 
     @Override
     public void onConnected() {
-
+        Log.d(CCConsumer.LOG_TAG, "Chromecast device connected");
+        listener.onConnected();
     }
 
     @Override
@@ -72,6 +77,7 @@ public class CCConsumer implements DataCastConsumer {
 
     @Override
     public void onDisconnected() {
+        Log.d(CCConsumer.LOG_TAG, "Disconnected from Chromecast device");
         listener.onDisconnected();
     }
 
@@ -114,7 +120,8 @@ public class CCConsumer implements DataCastConsumer {
     public void onFailed(int resourceId, int statusCode) {
     }
 
-    public interface Listener {
+    public interface CCConsumerListener {
+        void onConnected();
         void onDisconnected();
         void onMessageReceived(CastDevice castDevice, String namespace, String message);
     }

@@ -17,9 +17,7 @@ import java.util.HashMap;
 
 public class PlayingInputDialog {
 
-    private PlayingArrayAdapter.Types type;
     private HashMap<String, Integer> locale;
-    private BaseAdapter adapter;
 
     Activity activity;
 
@@ -86,7 +84,6 @@ public class PlayingInputDialog {
     }
 
     private void setLocale(PlayingArrayAdapter.Types type) {
-        this.type = type;
         locale = new HashMap();
 
         switch (type) {

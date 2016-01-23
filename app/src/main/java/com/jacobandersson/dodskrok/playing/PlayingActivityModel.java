@@ -42,7 +42,7 @@ public class PlayingActivityModel {
             @Override
             public void onPositiveClick(int index) {
                 missionsArrayAdapter.getList().remove(index);
-                updateAdapter(PlayingArrayAdapter.Types.MISSION);
+                _updateAdapter(PlayingArrayAdapter.Types.MISSION);
                 CCBridge.removeMission(index);
             }
         });
@@ -50,7 +50,7 @@ public class PlayingActivityModel {
             @Override
             public void onPositiveClick(int index) {
                 playersArrayAdapter.getList().remove(index);
-                updateAdapter(PlayingArrayAdapter.Types.PLAYER);
+                _updateAdapter(PlayingArrayAdapter.Types.PLAYER);
                 CCBridge.removePlayer(index);
             }
         });
@@ -107,23 +107,17 @@ public class PlayingActivityModel {
     }
 
     public void updateFloatingActionButton() {
-        Log.e("DKAPP-FAB", "Updating FAB Button");
         FloatingActionButton fab = (FloatingActionButton) activity.findViewById(R.id.fab_play);
 
-        if (listsConditionsIsOK())
-            Log.e("DKAPP-FAB", "Cond OK");
-        if (castDeviceConnected)
-            Log.e("DKAPP-FAB", "Connected");
+        Log.d(PlayingActivity.LOG_TAG, "Lists conditions: " + listsConditionsIsOK() + ", Cast device connected: " + castDeviceConnected);
 
         if (listsConditionsIsOK() && castDeviceConnected) {
-            Log.e("DKAPP-FAB", "Ready");
             int bg = ContextCompat.getColor(activity, R.color.colorPrimaryDark);
             int color = ContextCompat.getColor(activity, android.R.color.white);
 
             fab.setBackgroundTintList(ColorStateList.valueOf(bg));
             fab.setColorFilter(color);
         } else {
-            Log.e("DKAPP-FAB", "Not ready");
             int bg = ContextCompat.getColor(activity, android.R.color.white);
             int color = ContextCompat.getColor(activity, R.color.background);
 
@@ -138,12 +132,12 @@ public class PlayingActivityModel {
 
     public void addMissionToAdapter(String name) {
         missionsArrayAdapter.getList().add(name);
-        updateAdapter(PlayingArrayAdapter.Types.MISSION);
+        _updateAdapter(PlayingArrayAdapter.Types.MISSION);
     }
 
     public void addPlayerToAdapter(String name) {
         playersArrayAdapter.getList().add(name);
-        updateAdapter(PlayingArrayAdapter.Types.PLAYER);
+        _updateAdapter(PlayingArrayAdapter.Types.PLAYER);
     }
 
     public void setFooterText() {
@@ -240,7 +234,9 @@ public class PlayingActivityModel {
         });
     }
 
-    private void updateAdapter(PlayingArrayAdapter.Types type) {
+    /////////////////////////////////
+
+    private void _updateAdapter(PlayingArrayAdapter.Types type) {
 
         PlayingArrayAdapter adapter = null;
         ListView listview = null;

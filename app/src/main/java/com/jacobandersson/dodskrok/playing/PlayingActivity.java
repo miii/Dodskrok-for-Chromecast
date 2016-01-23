@@ -24,6 +24,8 @@ public class PlayingActivity extends AppCompatActivity {
     private PlayingActivityModel model;
     private DataCastManager mCastManager;
 
+    public static final String LOG_TAG = "DKAPP/Playing";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +42,12 @@ public class PlayingActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(R.string.actionbar_title);
 
         GoogleCast.getInstance(this);
-        GoogleCast.addConsumer(new CCConsumer(this, new CCConsumer.Listener() {
+        GoogleCast.addConsumer(new CCConsumer(this, new CCConsumer.CCConsumerListener() {
+            @Override
+            public void onConnected() {
+                CCBridge.initialize(model.missionsArrayAdapter.getList(), model.playersArrayAdapter.getList());
+            }
+
             @Override
             public void onDisconnected() {
                 model.castDeviceConnected = false;
@@ -67,9 +74,10 @@ public class PlayingActivity extends AppCompatActivity {
 
             @Override
             public void onInitialized() {
-                Log.e("DKAPP-FAB", "Is now connected");
+                Log.d(PlayingActivity.LOG_TAG, "onInitialized");
                 model.castDeviceConnected = true;
                 model.updateFloatingActionButton();
+
             }
         });
     }
